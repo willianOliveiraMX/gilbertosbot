@@ -8,7 +8,7 @@ from handlers.debts import debts
 from handlers.balance import balance
 from handlers.income import listIncome
 
-updater = Updater("5224890482:AAHH-6dbPLTZ5oTuYMD8Ca8CcAdzjUMNpAk",
+updater = Updater("",
                   use_context=True)
   
 def start(update, context):
