@@ -1,7 +1,6 @@
 import re
-
 from attr import has
-from modules.financeApiConnection import getBalanceByUserId
+from modules.financeApiConnection import getBalanceByToken
 from modules.financeApiConnection import createNewDebt
 from handlers.debts.listDebts import listDebts
 from handlers.debts.deleteDebt import deleteDebt
@@ -19,7 +18,7 @@ def debts(update, context):
 
         if (hasattr(debtIdToDelete, "group")):
             debtId = int(debtIdToDelete.group(0))
-            update.message.reply_text(deleteDebt(debtId), parse_mode="HTML")
+            update.message.reply_text(deleteDebt(debtId, token=update.message.chat_id), parse_mode="HTML")
             return
 
         if (not hasattr(debtIdToDelete, "group")):
@@ -31,12 +30,12 @@ def debts(update, context):
         numberPage = re.search("\d+", update.message.text)
         if (hasattr(numberPage, "group")):
             page = int(numberPage.group(0))
-        update.message.reply_text(listDebts(tempUserId, page), parse_mode="HTML")
+        update.message.reply_text(listDebts(token=update.message.chat_id, page=page), parse_mode="HTML")
         return
 
     if hasattr(value, "group") and description:
 
-        isDebtCreated = createNewDebt(value=value.group(0), description=description[-1], userId=tempUserId)
+        isDebtCreated = createNewDebt(value=value.group(0), description=description[-1], token=update.message.chat_id)
 
         if (isDebtCreated):
             update.message.reply_text("Seu débito foi salvo")
@@ -45,5 +44,6 @@ def debts(update, context):
             update.message.reply_text("Infelizmente algo deu errado. Tente novamente depois.")
             return
 
-    balance = getBalanceByUserId(tempUserId)
+    balance = getBalanceByToken(token=update.message.chat_id)
+    print(balance)
     update.message.reply_text(f"Esse é o total de seus débitos esse mês: <strong>{balance['debtTotal']}</strong>", parse_mode="HTML")

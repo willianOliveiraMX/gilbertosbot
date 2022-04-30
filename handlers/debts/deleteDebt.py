@@ -1,7 +1,7 @@
 from modules.financeApiConnection import deletDebtById
 
-def deleteDebt(debtId):
-    result = deletDebtById(debtId)
+def deleteDebt(debtId, token):
+    result = deletDebtById(debtId, token)
     print(result)
     if result["affected"] == 1:
         return 'Seu débito foi deletado com sucesso.'
