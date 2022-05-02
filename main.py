@@ -5,7 +5,6 @@ from telegram.ext.commandhandler import CommandHandler
 from telegram.ext.messagehandler import MessageHandler
 from telegram.ext.filters import Filters
 from dotenv import load_dotenv
-from modules.chatBotInput import getChatBotResponse
 from modules.userActions import verifyIfUserAlreadyAdd, createNewUser, addUserEmail
 from handlers.debts import debts
 from handlers.balance import balance
@@ -52,7 +51,7 @@ def unknown(update, context):
         else:
             update.message.reply_text("Não foi possível finalizar o seu cadastro. Tente mais tarde.")
             return
-    update.message.reply_text(getChatBotResponse(update.message.text))
+    update.message.reply_text("Desculpe, não entendi.")
 
 def error(update, context):
     print("Infelizmente, eu tive algum erro {context.error}")
