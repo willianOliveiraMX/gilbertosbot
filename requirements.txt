@@ -18,7 +18,6 @@ gunicorn
 idna
 ipykernel
 jsonschema
-language-selector
 launchpadlib
 louis
 macaroonbakery
