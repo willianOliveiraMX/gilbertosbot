@@ -11,7 +11,6 @@ cached-property==1.5.1
 cachetools==4.2.2
 certifi==2019.11.28
 chardet==3.0.4
-ChatterBot==1.0.5
 chatterbot-corpus==1.2.0
 chrome-gnome-shell==0.0.0
 click==8.1.3
