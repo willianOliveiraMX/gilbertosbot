@@ -6,7 +6,6 @@ chatterbot
 chatterbot-corpus
 colorama
 cryptography
-cupshelpers
 dbus-python
 defer
 distro
