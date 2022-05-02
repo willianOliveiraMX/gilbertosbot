@@ -4,7 +4,6 @@ cached-property
 chardet
 chatterbot
 chatterbot-corpus
-chrome-gnome-shell
 colorama
 command-not-found
 cryptography
