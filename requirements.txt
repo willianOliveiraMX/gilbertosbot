@@ -1,6 +1,5 @@
 attrs
 blinker
-brlapi
 cached-property
 chardet
 chatterbot
