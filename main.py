@@ -40,7 +40,6 @@ def unknown_text(update, context):
         "Desculpe, não entendi.")
 
 def unknown(update, context):
-    print(update.message.text)
     emailRegex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
     if(re.fullmatch(emailRegex, update.message.text)):
         print("Valid Email")
