@@ -5,7 +5,6 @@ from telegram.ext.commandhandler import CommandHandler
 from telegram.ext.messagehandler import MessageHandler
 from telegram.ext.filters import Filters
 from dotenv import load_dotenv
-from modules.chatBotInput import getChatBotResponse
 from modules.userActions import verifyIfUserAlreadyAdd, createNewUser, addUserEmail
 from handlers.debts import debts
 from handlers.balance import balance
@@ -41,10 +40,9 @@ def unknown_text(update, context):
         "Desculpe, não entendi.")
 
 def unknown(update, context):
-    print(update.message.text)
     emailRegex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
     if(re.fullmatch(emailRegex, update.message.text)):
-        print("Valid Email")
+        print("This is a mistake.")
         resultAddUser = addUserEmail(update.message.chat_id, update.message.text)
         if (resultAddUser):
             update.message.reply_text("Obrigado por completar o seu cadastro")
@@ -52,7 +50,7 @@ def unknown(update, context):
         else:
             update.message.reply_text("Não foi possível finalizar o seu cadastro. Tente mais tarde.")
             return
-    update.message.reply_text(getChatBotResponse(update.message.text))
+    update.message.reply_text("Desculpe, não entendi.")
 
 def error(update, context):
     print("Infelizmente, eu tive algum erro {context.error}")
