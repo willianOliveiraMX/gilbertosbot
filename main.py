@@ -42,7 +42,7 @@ def unknown_text(update, context):
 def unknown(update, context):
     emailRegex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
     if(re.fullmatch(emailRegex, update.message.text)):
-        print("This is a mistake.")
+        print("This is not mistake.")
         resultAddUser = addUserEmail(update.message.chat_id, update.message.text)
         if (resultAddUser):
             update.message.reply_text("Obrigado por completar o seu cadastro")
