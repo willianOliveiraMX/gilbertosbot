@@ -1,5 +1,4 @@
 import re
-from attr import has
 from modules.financeApiConnection import getBalanceByToken
 from modules.financeApiConnection import createNewDebt
 from handlers.debts.listDebts import listDebts
