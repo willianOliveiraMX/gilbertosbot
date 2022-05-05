@@ -1,4 +1,3 @@
-from datetime import datetime
 from modules.financeApiConnection import listDebtsByUserId
 
 def listDebts(token, page):

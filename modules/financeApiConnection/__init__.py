@@ -1,5 +1,4 @@
 import requests
-from sqlalchemy import true
 
 apiendpoint = "http://localhost:3000"
 
