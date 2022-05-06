@@ -6,9 +6,11 @@ authors = ["willianOliveiraMX <willianvoliveiravx@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-python-telegram-bot = "^13.11"
 python-dotenv = "^0.20.0"
 requests = "^2.27.1"
+python-telegram = "^0.15.0"
+telegram = "^0.0.1"
+python-telegram-bot = "^13.11"
 
 [tool.poetry.dev-dependencies]
 
