@@ -1,15 +1,18 @@
+import os
 import requests
+from dotenv import load_dotenv
 
-apiendpoint = "http://localhost:3000"
+load_dotenv()
+FINNACE_API_URL = os.getenv('FINNACE_API_URL')
 
 def getUserBytId(userId):
-    return requests.get(url=f'{apiendpoint}/user/1').json()
+    return requests.get(url=f'http://{FINNACE_API_URL}/user/1').json()
 
 def getUserByToken(token):
-    return requests.get(url=f'{apiendpoint}/user/token/{token}').json()
+    return requests.get(url=f'http://{FINNACE_API_URL}/user/token/{token}').json()
 
 def getBalanceByToken(token):
-    return requests.get(url=f'{apiendpoint}/balance/{token}').json()
+    return requests.get(url=f'http://{FINNACE_API_URL}/balance/{token}').json()
 
 def createNewDebt(value, description, token):
     data = {
@@ -22,19 +25,19 @@ def createNewDebt(value, description, token):
         'isalreadypay': 'true'
     }
     try:
-        requests.post(url=f'{apiendpoint}/debt', data=data)
+        requests.post(url=f'http://{FINNACE_API_URL}/debt', data=data)
         return True
     except:
         return False
 
 def listDebtsByUserId(token, page):
-    return requests.get(url=f'{apiendpoint}/debt/{token}/page/{page}').json()
+    return requests.get(url=f'http://{FINNACE_API_URL}/debt/{token}/page/{page}').json()
 
 def deletDebtById(debtId, token):
-    return requests.delete(url=f'{apiendpoint}/debt/remove/{debtId}/{token}').json()
+    return requests.delete(url=f'http://{FINNACE_API_URL}/debt/remove/{debtId}/{token}').json()
 
 def listIncomeByUserId(token): 
-    return requests.get(url=f'{apiendpoint}/income/{token}').json()
+    return requests.get(url=f'http://{FINNACE_API_URL}/income/{token}').json()
 
 def createNewIncome(value, description, token):
     data = {
@@ -44,14 +47,14 @@ def createNewIncome(value, description, token):
     }
 
     try:
-        requests.post(url=f'{apiendpoint}/income', data=data)
+        requests.post(url=f'http://{FINNACE_API_URL}/income', data=data)
         return True
     except:
         return False
 
 def deleteIncomeById(incomeId, token):
     try:
-        requests.delete(url=f'{apiendpoint}/income/{incomeId}/{token}')
+        requests.delete(url=f'http://{FINNACE_API_URL}/income/{incomeId}/{token}')
         return True
     except:
         return False
@@ -60,11 +63,11 @@ def createTempUser(token):
     obj = {
         "token": token
     }
-    return requests.post(url=f'{apiendpoint}/user', data = obj).json()
+    return requests.post(url=f'http://{FINNACE_API_URL}/user', data = obj).json()
 
 def createUser(token, email):
     obj = {
         "token": token,
         "email": email,
     }
-    return requests.post(url=f'{apiendpoint}/user', data = obj).json()
+    return requests.post(url=f'http://{FINNACE_API_URL}/user', data = obj).json()
