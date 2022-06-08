@@ -4,7 +4,12 @@ from modules.financeApiConnection import createNewDebt
 from handlers.debts.listDebts import listDebts
 from handlers.debts.deleteDebt import deleteDebt
 
-tempUserId = 1
+def debtsList(update, context):
+    page = 1
+    numberPage = re.search("\d+", update.message.text)
+    if (hasattr(numberPage, "group")):
+        page = int(numberPage.group(0))
+    update.message.reply_text(listDebts(token=update.message.chat_id, page=page), parse_mode="HTML")
 
 def debts(update, context):
     value = re.search("\d{1,9}[\,\.]{1}\d{1,2}", update.message.text)
@@ -25,11 +30,7 @@ def debts(update, context):
             return
 
     if hasattr(isList, "group"):
-        page = 1
-        numberPage = re.search("\d+", update.message.text)
-        if (hasattr(numberPage, "group")):
-            page = int(numberPage.group(0))
-        update.message.reply_text(listDebts(token=update.message.chat_id, page=page), parse_mode="HTML")
+        debtsList(update, context)
         return
 
     if hasattr(value, "group") and description:
