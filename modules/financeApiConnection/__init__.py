@@ -19,7 +19,6 @@ def createNewDebt(value, description, token):
         'token': token,
         'description': description,
         'value': value,
-        'groupid': '1',
         'installmentTotal': '1',
         'dateToPay': 'Fri Mar 18 2022 22:05:08 GMT-0300 (Horário Padrão de Brasília)',
         'isalreadypay': 'true'
